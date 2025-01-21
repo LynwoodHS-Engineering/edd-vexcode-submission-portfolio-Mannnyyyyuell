@@ -19,8 +19,8 @@ def initializeRandomSeed():
     wait(100, MSEC)
     random = brain.battery.voltage(MV) + brain.battery.current(CurrentUnits.AMP) * 100 + brain.timer.system_high_res()
     urandom.seed(int(random))
-     
-# Set random seed
+      
+# Set random seed 
 initializeRandomSeed()
 
 
@@ -36,37 +36,6 @@ wait(200, MSEC)
 print("\033[2J")
 
 #endregion VEXcode Generated Robot Configuration
-from vex import *
-import urandom
-
-# Brain should be defined by default
-brain = Brain()
-
-# Robot configuration code
-optical_1 = Optical(Ports.PORT1)
-motor_2 = Motor(Ports.PORT2, GearSetting.RATIO_18_1, False)
-
-# Wait for sensor to initialize
-wait(30, MSEC)
-
-# Make random actually random
-def initializeRandomSeed():
-    wait(100, MSEC)
-    random = brain.battery.voltage(MV) + brain.battery.current(CurrentUnits.AMP) * 100 + brain.timer.system_high_res()
-    urandom.seed(int(random))
-
-# Set random seed
-initializeRandomSeed()
-
-# Helper to make playing sounds from the V5 in VEXcode easier
-def play_vexcode_sound(sound_name):
-    print("VEXPlaySound:" + sound_name)
-    wait(5, MSEC)
-
-# Add a small delay to make sure we don't print in the middle of the REPL header
-wait(200, MSEC)
-# Clear the console to make sure we don't have the REPL in the console
-print("\033[2J")
 
 def when_started1():
     while True:
@@ -74,17 +43,17 @@ def when_started1():
         # Get the color detected by the optical sensor
         value = optical_1.color()
         color = optical_1.hue()
-       
+        
         # Map hue (0-360) to motor speed (0-100)
         motor_speed = int(color / 360 * 100)
 
         # Set the motor speed based on the color's hue
         motor_2.spin(FORWARD, motor_speed, PERCENT)
-       
+        
         # Display the hue value on the screen for debugging
         brain.screen.print("Color Hue: {}".format(color))
         brain.screen.next_row()
-       
+        
         # Delay to prevent the motor from running too quickly
         wait(50, MSEC)
 
