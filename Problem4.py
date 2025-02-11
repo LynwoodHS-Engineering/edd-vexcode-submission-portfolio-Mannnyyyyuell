@@ -1,14 +1,14 @@
-from vex import *
+import vex
 
-# Begin project code
 brain = vex.Brain()
 
 def main():
     while True:
-        radius = 10 + (potPina.value() * 90) // 4095
         brain.screen.clear_screen()
-        brain.screen.set_pen_color(vex.Color.GREEN)
-        brain.screen.draw_circle(240, 136, radius)
-        vex.wait(20, vex.TimeUnits.MSEC)
+        width = (potPinE.value() * 180) // 4095  # Changed scaling factor
+        brain.screen.set_fill_color(vex.Color.GREEN)
+        brain.screen.draw_rectangle(110, 90, width, 40)  # Adjusted position and size
+        brain.screen.print_at(15, 25, "Value: %d" % pot.value())  # Adjusted text position
+        vex.wait(100, vex.TimeUnits.MSEC)  # Changed wait time
 
 main()
