@@ -3,8 +3,8 @@ import time
 
 def updateDisplay():
     
-    brain.screen.set_fill_color(Color.BLUE)
-    brain.screen.draw_rectangle(180, 80, 140, 80) 
+    brain.screen.set_fill_color(Color.RED)
+    brain.screen.draw_rectangle(180, 80, 130, 90) 
     potPin = potentiometer_e.value()
     brain.screen.set_cursor(6, 24)
     brain.screen.print(potPin)
